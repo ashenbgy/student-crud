@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org"  lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.js"></script>
+    <script type="text/javascript" th:src="@{/registration.js}"></script>
+    <script type="text/javascript" th:src="@{/validations.js}"></script>
+</head>
+<body>
+<div align="center">
+    <h1>Register A New Student</h1>
+    <br />
+    <tr>
+        <div align = "left" >
+            <h5><a th:href="@{'/'}">Back to Menu</a></h5>
+        </div>
+    </tr>
+    <div class="col-sm-4">
+
+        <div alight="left">
+            <tr>
+                <label class="form-label" >Select Student</label>
+                    <td>
+                        <select id="regStudent" onchange="fillStudentData();" class="form-control">
+                            <option value="0">Select Student</option>
+                        </select>
+                    <td>
+            </tr>
+        </div>
+
+        <div alight="left">
+            <tr>
+                <label class="form-label" >Select Course</label>
+                <td>
+                    <select id="regCourse" onchange="fillCourseData();" class="form-control">
+                        <option value="0">Select Course</option>
+                    </select>
+                <td>
+            </tr>
+        </div>
+
+        <div alight="left">
+            <tr>
+                <label class="form-label" >Student Name</label>
+                <td>
+                    <input type="hidden" id="regStuId" />
+                    <input type="text" id="regStuName" class="form-control" placeholder="Student Name" readonly />
+                </td>
+            </tr>
+        </div>
+
+        <div alight="left">
+            <tr>
+                <label class="form-label" >Course Name</label>
+                <td>
+                    <input type="hidden" id="regCourseId" />
+                    <input type="text" id="regCourseName" class="form-control" placeholder="Course Name" readonly />
+                </td>
+            </tr>
+        </div>
+
+        <div alight="left">
+            <tr>
+                <label class="form-label" >Start Date</label>
+                <td>
+                    <input type="text" id="regStartDate" class="form-control" placeholder="Start Date" readonly />
+                </td>
+            </tr>
+        </div>
+
+        <div alight="left">
+            <tr>
+                <label class="form-label" >Phone</label>
+                <td>
+                    <input type="text" id="regPhone" class="form-control" placeholder="Phone" readonly />
+                </td>
+            </tr>
+        </div>
+        <br>
+        <tr>
+            <td colspan="2"><button type="button" class="btn btn-info" onclick="register()">Save</button></td>
+            <td colspan="2"><button type="button" class="btn" onclick="clearAll()">Clear</button></td>
+        </tr>
+
+    </div>
+
+    <br><br>
+    <div class="col-sm-8" align = "center">
+        <div class="panel-body" align = "center" >
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Course Name</th>
+                    <th>Start Date</th>
+                    <th>Phone</th>
+                </tr>
+                </thead>
+                <tbody id="stuCourseTbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

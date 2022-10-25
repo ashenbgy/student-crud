@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org"  lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add Course</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.js"></script>
+    <script type="text/javascript" th:src="@{/course.js}"></script>
+    <script type="text/javascript" th:src="@{/validations.js}"></script>
+</head>
+<body>
+<div align="center">
+    <h1>Create New Course</h1>
+
+    <div align = "left" >
+        <h5><a th:href="@{'/course'}">View All Courses</a></h5>
+    </div>
+
+    <br />
+    <div class="col-sm-4">
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Course Name</label>
+                    <td>
+                        <input type="hidden" id="courseId" />
+                        <input type="text" id="courseName" onkeyup="onlyChar('courseName');" class="form-control" placeholder="Course Name" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Start Date</label>
+                    <td>
+                        <input type="date" id="startDate" onblur="isFutureDate('startDate');" class="form-control" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Status</label>
+
+                    <td>
+                        <select id="status" class="form-control">
+                            <option>Select Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </td>
+                </tr>
+            </div>
+
+            <br>
+            <tr>
+                <td colspan="2"><button type="button" class="btn btn-info" onclick="saveCourse();">Save</button></td>
+                <td colspan="2"><button type="button" class="btn" onclick="clearAllCourse();">Clear</button></td>
+            </tr>
+
+    </div>
+</div>
+</body>
+</html>

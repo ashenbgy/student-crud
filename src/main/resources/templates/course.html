@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org"  lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Course Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.js"></script>
+  <script type="text/javascript" th:src="@{/course.js}"></script>
+  <style>
+    th.hide_me, td.hide_me {
+      display: none;
+      visibility: hidden;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h2 >Course Creation</h2>
+  <br>
+  <tr>
+    <div align = "left" >
+      <h5><a th:href="@{'/'}">Back to Menu</a></h5>
+    </div>
+  </tr>
+  <tr>
+    <div align = "left" >
+      <h3><a th:href="@{'/course/addCourse'}">Add new</a></h3>
+    </div>
+  </tr>
+
+  <div class="col-sm-8" align = "center">
+    <div class="panel-body" align = "center" >
+
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th>Course Name</th>
+          <th>Start Date</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody id="courseTbody">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </tr>
+
+  </tbody>
+  </table>
+  </div>
+
+  <div class="modal fade" id="update_modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h3 class="modal-title">Update Course</h3>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <label>Course Name</label>
+              <input type="hidden" id="upCourseId" />
+              <input type="text" id="upCourseName" onkeyup="onlyChar('upCourseName');" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Start Date</label>
+              <input type="date" id="upStartDate" onblur="isFutureDate('upStartDate');" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <select id="upStatus" class="form-control">
+                <option>Select Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="modal-footer">
+          <button name="update" class="btn btn-warning" onclick="updateCourse();"><span class="glyphicon glyphicon-edit"></span> Update</button>
+          <button class="btn btn-danger" type="button" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

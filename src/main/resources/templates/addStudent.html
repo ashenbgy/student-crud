@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org"  lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/af-2.3.7/b-2.2.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sl-1.3.4/datatables.min.js"></script>
+    <script type="text/javascript" th:src="@{/student.js}"></script>
+    <script type="text/javascript" th:src="@{/validations.js}"></script>
+    <style>
+        th.hide_me, td.hide_me {
+            display: none;
+            visibility: hidden;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div align="center">
+    <h1>Register New Student</h1>
+    <div align = "left" >
+        <h5><a th:href="@{'/student'}">View All Students</a></h5>
+    </div>
+    <br />
+    <div class="col-sm-4">
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >First Name</label>
+                    <td>
+                        <input type="hidden" id="stuId" />
+                        <input type="text" id="fName" onkeyup="onlyChar('fName');" class="form-control" placeholder="First Name" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Last Name</label>
+                    <td>
+                        <input type="text" id="lName" onkeyup="onlyChar('lName');" class="form-control" placeholder="Last Name" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Date Of Birth</label>
+                    <td>
+                        <input type="date" id="dob" onblur="checkAge('dob');" class="form-control" placeholder="Date Of Birth" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Phone Number</label>
+                    <td>
+                        <input type="text" id="phone" onblur="validatePhone('phone')" class="form-control" placeholder="0xx xxxxxxx" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Email</label>
+                    <td>
+                        <input type="email" id="email" onblur="validateEmail('email')" class="form-control" placeholder="me@example.com" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Gender</label>
+                    <td>
+                        <select id="gender" class="form-control">
+                            <option>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+                <tr>
+                    <label class="form-label" >Address</label>
+                    <td>
+                        <input type="text" id="address" onkeyup="onlyChar('address');" class="form-control" placeholder="Address" />
+                    </td>
+                </tr>
+            </div>
+
+            <br>
+            <tr>
+                <td colspan="2"><button type="button" class="btn btn-info" onclick="saveStudent()">Save</button></td>
+                <td colspan="2"><button type="button" class="btn" onclick="clearAllStu()">Clear</button></td>
+            </tr>
+
+    </div>
+</div>
+</body>
+</html>
