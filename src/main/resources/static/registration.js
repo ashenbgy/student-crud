@@ -44,7 +44,7 @@ function viewAllStudents() {
             for (j = 0; j < responseText.payload.length; j++) {
                 $('#regStudent').append(
                     "<option value=" + responseText.payload[j].stuId
-                    + ">" + responseText.payload[j].lastName
+                    + ">" + responseText.payload[j].firstName + " " + responseText.payload[j].lastName
                     + "</option>").trigger("chosen:updated");
             }
         },

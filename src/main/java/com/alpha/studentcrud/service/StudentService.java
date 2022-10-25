@@ -12,9 +12,6 @@ import com.alpha.studentcrud.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,19 +26,11 @@ public class StudentService {
     @Autowired
     private StudentMappingRepository studentMappingRepository;
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
     public void saveStudent(StudentDTO studentDTO) {
         Student student = new Student();
         student.setFirstName(studentDTO.getFirstName());
         student.setLastName(studentDTO.getLastName());
-        Date dob = null;
-        try {
-            dob = sdf.parse(studentDTO.getDob());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        student.setDob(dob);
+        student.setDob(studentDTO.getDob());
         student.setPhone(studentDTO.getPhone());
         student.setEmail(studentDTO.getEmail());
         student.setGender(studentDTO.getGender());
@@ -72,13 +61,7 @@ public class StudentService {
         student.setStuId(studentDTO.getStuId());
         student.setFirstName(studentDTO.getFirstName());
         student.setLastName(studentDTO.getLastName());
-        Date dob = null;
-        try {
-            dob = sdf.parse(studentDTO.getDob());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        student.setDob(dob);
+        student.setDob(studentDTO.getDob());
         student.setPhone(studentDTO.getPhone());
         student.setEmail(studentDTO.getEmail());
         student.setGender(studentDTO.getGender());
